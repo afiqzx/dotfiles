@@ -2,14 +2,35 @@
 set number
 set relativenumber
 
+" change tab character to spaces because why not
+:set expandtab
+:set shiftwidth=4
+
 " update time for faster response of CursorHold
 set updatetime=100
 
 " Plugin read start here
 call plug#begin('~/.vim/plugged')
 
+
+" Left and right can switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
+
+
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endi
+
+
+:map <silent> <leader>f :Files<return>
+
+
 " Good ol fzf and vi root ;)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 
 " GUI enchancement
@@ -23,12 +44,14 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
+" toml and yaml support
+Plug 'cespare/vim-toml'
+Plug 'stephpy/vim-yaml'
+
 " Rust Support
 Plug 'rust-lang/rust.vim'
 " Initialize plugin system
 call plug#end()
-
-
 
 
 " gruvbox default script. this enable true colour
@@ -42,6 +65,8 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+let g:gruvbox_number_column='bg1'
+let g:gruvbox_underline='1'
 " this use the gruvbox color scheme
 autocmd vimenter * ++nested colorscheme gruvbox
 
@@ -117,13 +142,4 @@ imap <S-Tab> <Plug>(completion_smart_s_tab)
 autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
 
-" Left and right can switch buffers
-nnoremap <left> :bp<CR>
-nnoremap <right> :bn<CR>
 
-
-" If you prefer the Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endi
