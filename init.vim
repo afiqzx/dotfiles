@@ -9,10 +9,6 @@ set relativenumber
 " update time for faster response of CursorHold
 set updatetime=100
 
-" Plugin read start here
-call plug#begin('~/.vim/plugged')
-
-
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
@@ -22,11 +18,16 @@ nnoremap <right> :bn<CR>
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endi
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 :map <silent> <leader>f :Files<return>
 
+
+
+
+" Plugin read start here
+call plug#begin('~/.vim/plugged')
 
 " Good ol fzf and vi root ;)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -123,6 +124,9 @@ nvim_lsp.rust_analyzer.setup({
     }
 })
 
+nvim_lsp.clangd.setup({
+    on_attach=on_attach
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
