@@ -13,6 +13,8 @@ set updatetime=100
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 
+" enable mouse scrolling
+set mouse=a
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
@@ -22,9 +24,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 :map <silent> <leader>f :Files<return>
-
-
-
 
 " Plugin read start here
 call plug#begin('~/.vim/plugged')
@@ -51,6 +50,12 @@ Plug 'stephpy/vim-yaml'
 
 " Rust Support
 Plug 'rust-lang/rust.vim'
+
+" For tree
+"Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -128,6 +133,15 @@ nvim_lsp.clangd.setup({
     on_attach=on_attach
 })
 
+nvim_lsp.tsserver.setup({
+    on_attach=on_attach
+})
+
+
+nvim_lsp.pyright.setup({
+    on_attach=on_attach
+})
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
@@ -135,6 +149,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
+-- nvim_lsp.html.setup({
+--     on_attach=on_attach,
+--     capabilities=capabilities,
+-- })
+
+
+require'nvim-tree'.setup()
 EOF
 
 " use <Tab> as trigger keys
@@ -146,4 +168,6 @@ imap <S-Tab> <Plug>(completion_smart_s_tab)
 autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
 
+" nvim-tree tonggle remap
+nnoremap <C-t> :NvimTreeToggle<CR>
 
