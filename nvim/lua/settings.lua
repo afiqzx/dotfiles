@@ -13,7 +13,7 @@ global.shiftwidth = 4
 global.mouse = 'a'
 
 -- somehow gruvbox doesnt work properly??
---global.termguicolors = true
+global.termguicolors = true
 
 options = { noremap = true, silent = true }
 --options = { noremap = true }          -- this is for debugging purpose (not silent)
