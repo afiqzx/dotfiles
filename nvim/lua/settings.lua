@@ -9,6 +9,12 @@ global.number = true
 global.expandtab = true
 global.shiftwidth = 4
 
+-- enable mouse goodness
+global.mouse = 'a'
+
+-- somehow gruvbox doesnt work properly??
+--global.termguicolors = true
+
 options = { noremap = true, silent = true }
 --options = { noremap = true }          -- this is for debugging purpose (not silent)
 -- Switching buffers keymap (do I need this actually???)
