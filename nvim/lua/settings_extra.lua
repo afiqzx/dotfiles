@@ -1,19 +1,20 @@
 local global = vim.o
 local kmap = vim.api.nvim_set_keymap
 
---local utils = require('gruvbox')
 
 -- I don't know how to translate this to lua
-vim.cmd'let g:gruvbox_number_column = \'bg1\''
-vim.cmd'let g:gruvbox_underline = \'1\''
+-- Update: I did it!
+vim.g.gruvbox_number_column = 'bg1'
+vim.g.gruvbox_underline = '1'
 
-vim.cmd'autocmd vimenter * ++nested colorscheme gruvbox'
+vim.cmd'colorscheme gruvbox'
 
-
---options = { noremap = true, silent = true }
+options = { noremap = true, silent = true }
 --options = { noremap = true }          -- this is for debugging purpose (not silent)
--- Switching buffers keymap (do I need this actually???)
+-- kmap example below is just for eazy copy paste in the future
 --kmap('n', '<left>', ':bp<CR>', options)
 
-
+-- we literally need completion-nvim just for this. YES I KNOW IT'S BLOATED
+kmap('i', '<Tab>', '<Plug>(completion_smart_tab)', options)
+kmap('i', '<S-Tab>', '<Plug>(completion_smart_s_tab)', options)
 

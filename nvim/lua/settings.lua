@@ -12,7 +12,7 @@ global.shiftwidth = 4
 -- enable mouse goodness
 global.mouse = 'a'
 
--- somehow gruvbox doesnt work properly??
+-- enable true color between alacritty, tmux and neovim
 global.termguicolors = true
 
 options = { noremap = true, silent = true }
@@ -21,4 +21,10 @@ options = { noremap = true, silent = true }
 kmap('n', '<left>', ':bp<CR>', options)
 kmap('n', '<right>', ':bn<CR>', options)
 
+-- open omnicomplete easily in insert mode
+kmap('i', '<leader>c', '<C-x><C-o>', options)
 
+
+kmap('n', '<leader>f', ':Files<CR>', options)
+kmap('n', '<leader>b', ':Buffers<CR>', options)
+kmap('n', '<leader>w', ':Windows<CR>', options)
