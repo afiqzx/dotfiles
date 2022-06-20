@@ -27,5 +27,7 @@ Plug 'nvim-lua/completion-nvim' -- is now public archive. but we need the smart 
 --Plug 'nvim-lua/lsp-status.nvim'  -- doesn't work. figure out later
 Plug 'simrat39/rust-tools.nvim'
 
+Plug 'nvim-treesitter/nvim-treesitter'
+
 vim.call('plug#end')
 

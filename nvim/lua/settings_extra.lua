@@ -18,3 +18,15 @@ options = { noremap = true, silent = true }
 kmap('i', '<Tab>', '<Plug>(completion_smart_tab)', options)
 kmap('i', '<S-Tab>', '<Plug>(completion_smart_s_tab)', options)
 
+
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "c", "lua", "rust", "cpp" },
+
+    sync_install = false,
+
+    highlight = {
+        enable = true,
+    },
+}
+
+
