@@ -17,6 +17,7 @@ options = { noremap = true, silent = true }
 -- we literally need completion-nvim just for this. YES I KNOW IT'S BLOATED
 kmap('i', '<Tab>', '<Plug>(completion_smart_tab)', options)
 kmap('i', '<S-Tab>', '<Plug>(completion_smart_s_tab)', options)
+vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
 
 
 require'nvim-treesitter.configs'.setup {
