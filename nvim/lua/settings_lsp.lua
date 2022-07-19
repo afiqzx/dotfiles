@@ -56,3 +56,8 @@ local ranalyzeropts = {
     }
 }
 nvim_lsp.rust_analyzer.setup(ranalyzeropts)
+
+local clangdopts = {
+    on_attach=on_attach,
+}
+nvim_lsp.clangd.setup(clangdopts)

@@ -25,8 +25,8 @@ kmap('n', '<right>', ':bn<CR>', options)
 kmap('i', '<leader>c', '<C-x><C-o>', options)
 
 
-kmap('n', '<leader>f', ':Files<CR>', options)
-kmap('n', '<leader>b', ':Buffers<CR>', options)
-kmap('n', '<leader>w', ':Windows<CR>', options)
+kmap('n', '<leader>f', ':Telescope find_files theme=dropdown<CR>', options)
+kmap('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>', options)
+kmap('n', '<leader>r', ':Telescope live_grep theme=dropdown<CR>', options)
 kmap('n', '<leader>e', ':Explore<CR>', options)
 kmap('n', '<leader>t', ':Texplore<CR>', options)

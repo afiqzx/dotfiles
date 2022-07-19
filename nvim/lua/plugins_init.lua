@@ -4,8 +4,11 @@ vim.call('plug#begin', '~/.config/nvim/plugged/plug.vim')
 
 -- Good ol fzf and vi root ;)
 -- This require you to install fzf manually
-Plug 'junegunn/fzf.vim'
+--Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 -- status bar enchancement
 Plug 'itchyny/lightline.vim'
