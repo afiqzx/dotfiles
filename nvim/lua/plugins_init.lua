@@ -23,6 +23,9 @@ Plug 'stephpy/vim-yaml'
 -- Rust Support
 Plug 'rust-lang/rust.vim'
 
+-- Dart Support
+Plug 'dart-lang/dart-vim-plugin'
+
 -- lsp things
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim' -- is now public archive. but we need the smart tab for completion window
