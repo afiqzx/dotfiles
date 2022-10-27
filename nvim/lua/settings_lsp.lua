@@ -67,5 +67,11 @@ nvim_lsp.pylsp.setup({
 nvim_lsp.dartls.setup({
     on_attach=on_attach,
 })
+nvim_lsp.tsserver.setup({
+    on_attach=on_attach,
+})
+nvim_lsp.html.setup({
+    on_attach=on_attach,
+})
 --nvim_lsp.dartls.setup{}
 

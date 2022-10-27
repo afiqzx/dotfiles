@@ -20,7 +20,7 @@ kmap('i', '<S-Tab>', '<Plug>(completion_smart_s_tab)', options)
 vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
 
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "lua", "rust", "cpp" },
+    ensure_installed = { "c", "lua", "rust", "cpp", "html", "css", "javascript" },
 
     sync_install = false,
 
