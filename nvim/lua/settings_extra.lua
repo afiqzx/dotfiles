@@ -14,11 +14,6 @@ options = { noremap = true, silent = true }
 -- kmap example below is just for eazy copy paste in the future
 --kmap('n', '<left>', ':bp<CR>', options)
 
--- we literally need completion-nvim just for this. YES I KNOW IT'S BLOATED
-kmap('i', '<Tab>', '<Plug>(completion_smart_tab)', options)
-kmap('i', '<S-Tab>', '<Plug>(completion_smart_s_tab)', options)
-vim.cmd('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
-
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "lua", "rust", "cpp", "html", "css", "javascript" },
 
@@ -28,5 +23,7 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
     },
 }
+
+
 
 

@@ -10,6 +10,12 @@ Plug 'airblade/vim-rooter'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+-- Snippet plugin
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-vsnip'
+
 -- status bar enchancement
 Plug 'itchyny/lightline.vim'
 
@@ -28,8 +34,6 @@ Plug 'dart-lang/dart-vim-plugin'
 
 -- lsp things
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim' -- is now public archive. but we need the smart tab for completion window
---Plug 'nvim-lua/lsp_extensions.nvim'
 --Plug 'nvim-lua/lsp-status.nvim'  -- doesn't work. figure out later
 Plug 'simrat39/rust-tools.nvim'
 

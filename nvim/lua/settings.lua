@@ -17,12 +17,8 @@ global.termguicolors = true
 
 options = { noremap = true, silent = true }
 --options = { noremap = true }          -- this is for debugging purpose (not silent)
--- Switching buffers keymap (do I need this actually???)
 kmap('n', '<left>', ':bp<CR>', options)
 kmap('n', '<right>', ':bn<CR>', options)
-
--- open omnicomplete easily in insert mode
-kmap('i', '<leader>c', '<C-x><C-o>', options)
 
 
 kmap('n', '<leader>f', ':Telescope find_files theme=dropdown<CR>', options)
