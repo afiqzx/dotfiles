@@ -115,5 +115,12 @@ nvim_lsp.cssls.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
---nvim_lsp.dartls.setup{}
+nvim_lsp.hls.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
+nvim_lsp.astro.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
 
