@@ -21,7 +21,8 @@ Plug 'itchyny/lightline.vim'
 
 -- color scheme
 --Plug 'morhetz/gruvbox'
-Plug ('folke/tokyonight.nvim', {branch= 'main'})
+--Plug ('folke/tokyonight.nvim', {branch= 'main'})
+Plug 'tomasiser/vim-code-dark'
 
 -- toml and yaml support
 Plug 'cespare/vim-toml'

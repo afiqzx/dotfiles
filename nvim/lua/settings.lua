@@ -8,6 +8,8 @@ global.number = true
 -- insert space in tab
 global.expandtab = true
 global.shiftwidth = 4
+global.softtabstop = 4
+global.tabstop = 4
 
 -- enable mouse goodness
 global.mouse = 'a'
@@ -26,3 +28,11 @@ kmap('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>', options)
 kmap('n', '<leader>r', ':Telescope live_grep theme=dropdown<CR>', options)
 kmap('n', '<leader>e', ':Explore<CR>', options)
 kmap('n', '<leader>t', ':Texplore<CR>', options)
+
+-- set astro filetype
+--vim.filetype.add({
+--    extension = {
+--        astro = "astro",
+--    },
+--})
+

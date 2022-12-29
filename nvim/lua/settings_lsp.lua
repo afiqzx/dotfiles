@@ -65,8 +65,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q'        , '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<space>f'        , "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-  -- this require archived plugin
-  --require'completion'.on_attach(client)
 end
 
 -- for rust-analzyer (only rust get special treatment lol)
@@ -123,4 +121,7 @@ nvim_lsp.astro.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
-
+nvim_lsp.denols.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
