@@ -9,12 +9,14 @@ local nvim_lsp = require'lspconfig'
 local cmp = require'cmp'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 -- setup completion plugin
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            --vim.fn["vsnip#anonymous"](args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
     -- beatify completion windows
@@ -28,17 +30,24 @@ cmp.setup({
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = false }), 
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), 
     }),
     -- setup source from lsp and vsnip
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'vsnip' },
+        --{ name = 'vsnip' },
+        { name = 'luasnip' },
     }, {
         { name = 'buffer' },
+        { name = 'nvim_lsp_signature_help' },
     })
 
 })
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 -- Your usual LSP setup
 local on_attach = function(client, bufnr)
@@ -52,9 +61,9 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD'              , '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd'              , '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K'               , '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gD'              , '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd'              , '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K'               , '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi'              , '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>'           , '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>D'        , '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -69,6 +78,10 @@ end
 
 -- for rust-analzyer (only rust get special treatment lol)
 local ranalyzeropts = {
+    cmd = {
+        "/home/afiq/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer"
+    },
+
     on_attach=on_attach,
     settings = {
         ["rust-analyzer"] = {
@@ -80,7 +93,15 @@ local ranalyzeropts = {
                 loadOutDirsFromCheck = true
             },
             procMacro = {
-                enable = true
+                enable = true,
+                --attributes = {
+                --    enable = false,
+                --},
+                --ignored = {
+                --    leptos = {
+                --        [ "component" ]
+                --    },
+                --},
             },
         }
     }

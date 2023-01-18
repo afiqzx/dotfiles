@@ -12,9 +12,14 @@ Plug 'nvim-telescope/telescope.nvim'
 
 -- Snippet plugin
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/cmp-vsnip'
+--Plug 'hrsh7th/vim-vsnip'
+--Plug 'hrsh7th/cmp-vsnip'
+
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'windwp/nvim-autopairs'
 
 -- status bar enchancement
 Plug 'itchyny/lightline.vim'
