@@ -439,10 +439,9 @@ font:
 # even though we invoke 'new-session', -A flag behave like 'attach-session' if session'name
 # has already exist
 shell:
-  program: /usr/bin/fish
+  program: zellij
   args:
-    - -c
-    - "tmux new-session -As0"
+    - "attach -c afiq"
 
 # Startup directory
 #
