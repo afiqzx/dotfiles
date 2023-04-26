@@ -25,9 +25,9 @@ Plug 'windwp/nvim-autopairs'
 Plug 'itchyny/lightline.vim'
 
 -- color scheme
---Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 --Plug ('folke/tokyonight.nvim', {branch= 'main'})
-Plug 'tomasiser/vim-code-dark'
+--Plug 'tomasiser/vim-code-dark'
 
 -- toml and yaml support
 Plug 'cespare/vim-toml'
@@ -49,6 +49,8 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'wuelnerdotexe/vim-astro'
 
 Plug 'nvim-treesitter/nvim-treesitter'
+
+Plug 'slint-ui/vim-slint'
 
 vim.call('plug#end')
 

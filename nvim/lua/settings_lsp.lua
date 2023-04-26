@@ -78,11 +78,8 @@ end
 
 -- for rust-analzyer (only rust get special treatment lol)
 local ranalyzeropts = {
-    cmd = {
-        "/home/afiq/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer"
-    },
-
     on_attach=on_attach,
+
     settings = {
         ["rust-analyzer"] = {
             assist = {
@@ -92,20 +89,12 @@ local ranalyzeropts = {
             cargo = {
                 loadOutDirsFromCheck = true
             },
-            procMacro = {
-                enable = true,
-                --attributes = {
-                --    enable = false,
-                --},
-                --ignored = {
-                --    leptos = {
-                --        [ "component" ]
-                --    },
-                --},
-            },
         }
-    }
+    },
+
+    capabilities=capabilities,
 }
+
 nvim_lsp.rust_analyzer.setup(ranalyzeropts)
 
 nvim_lsp.clangd.setup({
@@ -122,27 +111,47 @@ nvim_lsp.dartls.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+
 nvim_lsp.tsserver.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+
 nvim_lsp.html.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+
 nvim_lsp.cssls.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+
 nvim_lsp.hls.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+
 nvim_lsp.astro.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+
 nvim_lsp.denols.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+
+local slint_setting = {
+    on_attach=on_attach,
+
+    capabilities=capabilities,
+
+    filetypes = { 
+        "slint",
+        "rust",
+    },
+}
+
+nvim_lsp.slint_lsp.setup(slint_setting)
+
