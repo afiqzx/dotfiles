@@ -9,7 +9,7 @@ local nvim_lsp = require'lspconfig'
 local cmp = require'cmp'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+--local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 -- setup completion plugin
 cmp.setup({
@@ -35,8 +35,8 @@ cmp.setup({
     -- setup source from lsp and vsnip
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        --{ name = 'vsnip' },
-        { name = 'luasnip' },
+        { name = 'vsnip' },
+        --{ name = 'luasnip' },
     }, {
         { name = 'buffer' },
         { name = 'nvim_lsp_signature_help' },
@@ -44,18 +44,13 @@ cmp.setup({
 
 })
 
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
-
 -- Your usual LSP setup
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   --Enable completion triggered by <c-x><c-o> (omnifunc setup is fallback)
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -88,6 +83,12 @@ local ranalyzeropts = {
             },
             cargo = {
                 loadOutDirsFromCheck = true
+            },
+            procMacro = {
+                enable = true
+            },
+            experimental = {
+                procAttrMacros = true
             },
         }
     },
@@ -137,10 +138,28 @@ nvim_lsp.astro.setup({
     capabilities=capabilities,
 })
 
-nvim_lsp.denols.setup({
+nvim_lsp.tailwindcss.setup({
     on_attach=on_attach,
     capabilities=capabilities,
+
+    filetypes = {
+        "rust",
+        "css",
+        "jsx",
+        "tsx",
+        "html",
+    },
+    init_options = {
+        userLanguages = {
+            rust = "html",
+        },
+    },
 })
+
+--nvim_lsp.denols.setup({
+--    on_attach=on_attach,
+--    capabilities=capabilities,
+--})
 
 local slint_setting = {
     on_attach=on_attach,
@@ -155,3 +174,7 @@ local slint_setting = {
 
 nvim_lsp.slint_lsp.setup(slint_setting)
 
+nvim_lsp.cmake.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})

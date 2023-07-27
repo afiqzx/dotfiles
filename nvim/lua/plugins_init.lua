@@ -19,7 +19,6 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'windwp/nvim-autopairs'
 
 -- status bar enchancement
 Plug 'itchyny/lightline.vim'

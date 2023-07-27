@@ -21,12 +21,22 @@ options = { noremap = true, silent = true }
 --kmap('n', '<left>', ':bp<CR>', options)
 
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "lua", "rust", "cpp", "html", "css", "javascript", "astro" },
+    ensure_installed = { 
+        "c",
+        "lua",
+        "rust",
+        "cpp",
+        "html",
+        "css",
+        "javascript",
+        "astro",
+    },
 
     sync_install = true,
 
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = false,
     },
 }
 
