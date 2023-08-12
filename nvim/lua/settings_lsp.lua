@@ -92,7 +92,6 @@ local ranalyzeropts = {
     },
 }
 
-ranalyzeropts.capabilities.offsetEncodings = 'utf-8'
 nvim_lsp.rust_analyzer.setup(ranalyzeropts)
 
 nvim_lsp.clangd.setup({
