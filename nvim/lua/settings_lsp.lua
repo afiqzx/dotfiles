@@ -1,10 +1,6 @@
 -- start rust-tools with default settings
 require('rust-tools').setup({})
 
--- local lsp_status = require('lsp-status')
--- lsp_status.register_progress()
-
-
 local nvim_lsp = require'lspconfig'
 local cmp = require'cmp'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -74,6 +70,7 @@ end
 -- for rust-analzyer (only rust get special treatment lol)
 local ranalyzeropts = {
     on_attach=on_attach,
+    capabilities=capabilities,
 
     settings = {
         ["rust-analyzer"] = {
@@ -82,7 +79,8 @@ local ranalyzeropts = {
                 importPrefix = "by_self",
             },
             cargo = {
-                loadOutDirsFromCheck = true
+                loadOutDirsFromCheck = true,
+                --target = "wasm32-unknown-unknown",
             },
             procMacro = {
                 enable = true
@@ -92,10 +90,9 @@ local ranalyzeropts = {
             },
         }
     },
-
-    capabilities=capabilities,
 }
 
+ranalyzeropts.capabilities.offsetEncodings = 'utf-8'
 nvim_lsp.rust_analyzer.setup(ranalyzeropts)
 
 nvim_lsp.clangd.setup({
@@ -152,14 +149,15 @@ nvim_lsp.tailwindcss.setup({
     init_options = {
         userLanguages = {
             rust = "html",
+            typescript = "html",
         },
     },
 })
 
---nvim_lsp.denols.setup({
---    on_attach=on_attach,
---    capabilities=capabilities,
---})
+nvim_lsp.denols.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
 
 local slint_setting = {
     on_attach=on_attach,
@@ -172,9 +170,13 @@ local slint_setting = {
     },
 }
 
+-- This is important because nvim will shit on you about multiple 
+-- offset_encodings not supported (yet)
+slint_setting.capabilities.offsetEncoding = 'utf-8'
 nvim_lsp.slint_lsp.setup(slint_setting)
 
 nvim_lsp.cmake.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
+

@@ -24,8 +24,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'itchyny/lightline.vim'
 
 -- color scheme
-Plug 'morhetz/gruvbox'
---Plug ('folke/tokyonight.nvim', {branch= 'main'})
+--Plug 'morhetz/gruvbox'
+Plug ('folke/tokyonight.nvim', {branch= 'main'})
 --Plug 'tomasiser/vim-code-dark'
 
 -- toml and yaml support
@@ -40,9 +40,6 @@ Plug 'dart-lang/dart-vim-plugin'
 
 -- lsp things
 Plug 'neovim/nvim-lspconfig'
---Plug 'nvim-lua/completion-nvim' -- is now public archive. but we need the smart tab for completion window
---Plug 'nvim-lua/lsp_extensions.nvim'
---Plug 'nvim-lua/lsp-status.nvim'  -- doesn't work. figure out later
 Plug 'simrat39/rust-tools.nvim'
 
 Plug 'wuelnerdotexe/vim-astro'
