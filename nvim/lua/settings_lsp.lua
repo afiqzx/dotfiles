@@ -82,12 +82,12 @@ local ranalyzeropts = {
                 loadOutDirsFromCheck = true,
                 --target = "wasm32-unknown-unknown",
             },
-            procMacro = {
-                enable = true
-            },
-            experimental = {
-                procAttrMacros = true
-            },
+            -- procMacro = {
+            --     enable = true
+            -- },
+            -- experimental = {
+            --     procAttrMacros = true
+            -- },
         }
     },
 }
@@ -109,10 +109,10 @@ nvim_lsp.dartls.setup({
     capabilities=capabilities,
 })
 
-nvim_lsp.tsserver.setup({
-    on_attach=on_attach,
-    capabilities=capabilities,
-})
+-- nvim_lsp.tsserver.setup({
+--     on_attach=on_attach,
+--     capabilities=capabilities,
+-- })
 
 nvim_lsp.html.setup({
     on_attach=on_attach,
@@ -141,14 +141,15 @@ nvim_lsp.tailwindcss.setup({
     filetypes = {
         "rust",
         "css",
-        "jsx",
-        "tsx",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
         "html",
     },
     init_options = {
         userLanguages = {
             rust = "html",
-            typescript = "html",
         },
     },
 })
@@ -175,6 +176,11 @@ slint_setting.capabilities.offsetEncoding = 'utf-8'
 nvim_lsp.slint_lsp.setup(slint_setting)
 
 nvim_lsp.cmake.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
+
+nvim_lsp.ocamllsp.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
