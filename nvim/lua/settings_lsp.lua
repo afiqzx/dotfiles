@@ -109,10 +109,10 @@ nvim_lsp.dartls.setup({
     capabilities=capabilities,
 })
 
--- nvim_lsp.tsserver.setup({
---     on_attach=on_attach,
---     capabilities=capabilities,
--- })
+nvim_lsp.tsserver.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
 
 nvim_lsp.html.setup({
     on_attach=on_attach,
@@ -129,10 +129,10 @@ nvim_lsp.hls.setup({
     capabilities=capabilities,
 })
 
-nvim_lsp.astro.setup({
-    on_attach=on_attach,
-    capabilities=capabilities,
-})
+--nvim_lsp.astro.setup({
+--    on_attach=on_attach,
+--    capabilities=capabilities,
+--})
 
 nvim_lsp.tailwindcss.setup({
     on_attach=on_attach,
@@ -154,10 +154,10 @@ nvim_lsp.tailwindcss.setup({
     },
 })
 
-nvim_lsp.denols.setup({
-    on_attach=on_attach,
-    capabilities=capabilities,
-})
+--nvim_lsp.denols.setup({
+--    on_attach=on_attach,
+--    capabilities=capabilities,
+--})
 
 local slint_setting = {
     on_attach=on_attach,
@@ -181,6 +181,12 @@ nvim_lsp.cmake.setup({
 })
 
 nvim_lsp.ocamllsp.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
+
+nvim_lsp.elixirls.setup({
+    cmd = { "~/.elixirls/language_server.sh" },
     on_attach=on_attach,
     capabilities=capabilities,
 })
