@@ -1,2 +1,6 @@
-shell = { program = "/usr/bin/fish", args = ["-c", "/usr/bin/tmux new -As0"] }
+[shell]
+program = "/usr/bin/fish"
+args = ["-c", "/usr/bin/tmux new -As0"]
 
+[env]
+TERM = "xterm-256color"
