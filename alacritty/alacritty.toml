@@ -1,0 +1,2 @@
+shell = { program = "/usr/bin/fish", args = ["-c", "/usr/bin/tmux new -As0"] }
+
