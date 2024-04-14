@@ -186,7 +186,7 @@ nvim_lsp.ocamllsp.setup({
 })
 
 nvim_lsp.elixirls.setup({
-    cmd = { "~/.elixirls/language_server.sh" },
+    cmd = { "/home/afiq/.elixirlsp/launch.fish" },
     on_attach=on_attach,
     capabilities=capabilities,
 })

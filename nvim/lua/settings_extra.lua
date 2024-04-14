@@ -21,6 +21,7 @@ require'nvim-treesitter.configs'.setup {
         "css",
         "javascript",
         "astro",
+        "elixir",
     },
 
     sync_install = true,
@@ -30,4 +31,7 @@ require'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
 }
+
+-- projects with CMake(which have multiple Makefiles) will mess up the root directory
+vim.g.rooter_patterns = {".git"}
 
