@@ -119,39 +119,42 @@ nvim_lsp.html.setup({
     capabilities=capabilities,
 })
 
+nvim_lsp.jinja_lsp.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+
+    filetypes = { 'jinja', 'rust', 'html' },
+    init_options = {
+        templates = './templates',
+        backend = { './src' },
+        lang = "rust"
+    },
+})
+
 nvim_lsp.cssls.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
-
-nvim_lsp.hls.setup({
-    on_attach=on_attach,
-    capabilities=capabilities,
-})
-
---nvim_lsp.astro.setup({
---    on_attach=on_attach,
---    capabilities=capabilities,
---})
 
 nvim_lsp.tailwindcss.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 
     filetypes = {
-        "rust",
+        --"rust",
         "css",
         "javascript",
         "javascriptreact",
         "typescript",
         "typescriptreact",
         "html",
+        "jinja",
     },
-    init_options = {
-        userLanguages = {
-            rust = "html",
-        },
-    },
+    --init_options = {
+    --    userLanguages = {
+    --        rust = "html",
+    --    },
+    --},
 })
 
 --nvim_lsp.denols.setup({
@@ -159,21 +162,21 @@ nvim_lsp.tailwindcss.setup({
 --    capabilities=capabilities,
 --})
 
-local slint_setting = {
-    on_attach=on_attach,
-
-    capabilities=capabilities,
-
-    filetypes = { 
-        "slint",
-        "rust",
-    },
-}
+--local slint_setting = {
+--    on_attach=on_attach,
+--
+--    capabilities=capabilities,
+--
+--    filetypes = { 
+--        "slint",
+--        "rust",
+--    },
+--}
 
 -- This is important because nvim will shit on you about multiple 
 -- offset_encodings not supported (yet)
-slint_setting.capabilities.offsetEncoding = 'utf-8'
-nvim_lsp.slint_lsp.setup(slint_setting)
+--slint_setting.capabilities.offsetEncoding = 'utf-8'
+--nvim_lsp.slint_lsp.setup(slint_setting)
 
 nvim_lsp.cmake.setup({
     on_attach=on_attach,
@@ -185,9 +188,9 @@ nvim_lsp.ocamllsp.setup({
     capabilities=capabilities,
 })
 
-nvim_lsp.elixirls.setup({
-    cmd = { "/home/afiq/.elixirlsp/launch.fish" },
-    on_attach=on_attach,
-    capabilities=capabilities,
-})
+--nvim_lsp.elixirls.setup({
+--    cmd = { "/home/afiq/.elixirlsp/launch.fish" },
+--    on_attach=on_attach,
+--    capabilities=capabilities,
+--})
 

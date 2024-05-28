@@ -35,3 +35,12 @@ require'nvim-treesitter.configs'.setup {
 -- projects with CMake(which have multiple Makefiles) will mess up the root directory
 vim.g.rooter_patterns = {".git"}
 
+-- for some reason jinja filetype is not suuported by nvim?
+vim.filetype.add {
+  extension = {
+    jinja = 'jinja',
+    jinja2 = 'jinja',
+    j2 = 'jinja',
+  },
+}
+
