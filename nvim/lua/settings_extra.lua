@@ -9,19 +9,18 @@ vim.cmd'colorscheme tokyonight-night'
 
 options = { noremap = true, silent = true }
 --options = { noremap = true }          -- this is for debugging purpose (not silent)
---kmap('n', '<left>', ':bp<CR>', options)
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { 
         "c",
+        "cpp",
+        "css",
+        "html",
+        "javascript",
         "lua",
         "rust",
-        "cpp",
-        "html",
-        "css",
-        "javascript",
-        "astro",
-        "elixir",
+        "vim",
+        "vimdoc",
     },
 
     sync_install = true,
@@ -31,6 +30,8 @@ require'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
 }
+
+require('lualine').setup()
 
 -- projects with CMake(which have multiple Makefiles) will mess up the root directory
 vim.g.rooter_patterns = {".git"}

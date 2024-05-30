@@ -1,11 +1,7 @@
--- start rust-tools with default settings
-require('rust-tools').setup({})
 
 local nvim_lsp = require'lspconfig'
 local cmp = require'cmp'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
---local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 -- setup completion plugin
 cmp.setup({
@@ -157,11 +153,6 @@ nvim_lsp.tailwindcss.setup({
     --},
 })
 
---nvim_lsp.denols.setup({
---    on_attach=on_attach,
---    capabilities=capabilities,
---})
-
 --local slint_setting = {
 --    on_attach=on_attach,
 --
@@ -187,10 +178,4 @@ nvim_lsp.ocamllsp.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
-
---nvim_lsp.elixirls.setup({
---    cmd = { "/home/afiq/.elixirlsp/launch.fish" },
---    on_attach=on_attach,
---    capabilities=capabilities,
---})
 

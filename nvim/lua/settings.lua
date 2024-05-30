@@ -24,10 +24,7 @@ kmap('n', '<right>', ':bn<CR>', options)
 
 kmap('n', '<leader>f', ':Telescope find_files theme=dropdown<CR>', options)
 kmap('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>', options)
-kmap('n', '<leader>r', ':Telescope live_grep theme=dropdown<CR>', options)
+kmap('n', '<leader>g', ':Telescope live_grep theme=dropdown<CR>', options)
 kmap('n', '<leader>e', ':Explore<CR>', options)
 kmap('n', '<leader>t', ':Texplore<CR>', options)
-
-kmap('n', '<leader>ci', ':%s:\\/\\/#\\[component\\]:#\\[component\\]:g<CR>', options)
-kmap('n', '<leader>co', ':%s:#\\[component\\]:\\/\\/#\\[component\\]:g<CR>', options)
 

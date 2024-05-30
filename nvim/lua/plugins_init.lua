@@ -1,52 +1,60 @@
-local Plug = vim.fn['plug#']
 
-vim.call('plug#begin', '~/.config/nvim/plugged/plug.vim')
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
 
--- Good ol fzf and vi root ;)
--- This require you to install fzf manually
---Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
+local packer_bootstrap = ensure_packer()
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
 
--- Snippet plugin
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'hrsh7th/cmp-nvim-lsp'
---Plug 'hrsh7th/vim-vsnip'
---Plug 'hrsh7th/cmp-vsnip'
+  -- basics
+  use 'airblade/vim-rooter'
+  use {
+      'nvim-telescope/telescope.nvim',
+      requires = {
+          { 'nvim-tree/nvim-web-devicons', opt = false },
+          { 'nvim-lua/plenary.nvim', opt = false },
+      }
+  }
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'folke/tokyonight.nvim'
 
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
+  use 'neovim/nvim-lspconfig'
 
--- status bar enchancement
-Plug 'itchyny/lightline.vim'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use 'hrsh7th/cmp-nvim-lsp'
 
--- color scheme
---Plug 'morhetz/gruvbox'
-Plug ('folke/tokyonight.nvim', {branch= 'main'})
---Plug 'tomasiser/vim-code-dark'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
--- toml and yaml support
-Plug 'cespare/vim-toml'
-Plug 'stephpy/vim-yaml'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = false }
+  }
 
--- Rust Support
-Plug 'rust-lang/rust.vim'
+  use 'cespare/vim-toml'
+  use 'stephpy/vim-yaml'
 
--- Dart Support
-Plug 'dart-lang/dart-vim-plugin'
+  -- THE OG LETSSGOOOOOO
+  use 'tpope/vim-fugitive'
 
--- lsp things
-Plug 'neovim/nvim-lspconfig'
-Plug 'simrat39/rust-tools.nvim'
+  use 'slint-ui/vim-slint'
+  --use 'mrcjkb/rustaceanvim'  -- on a side note I don't want this, will cause conflict with my LSP setup
+  --use 'rust-lang/rust.vim' -- Don't think we need this
 
-Plug 'wuelnerdotexe/vim-astro'
-
-Plug 'nvim-treesitter/nvim-treesitter'
-
-Plug 'slint-ui/vim-slint'
-
-vim.call('plug#end')
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
 
