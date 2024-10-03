@@ -18,6 +18,7 @@ require'nvim-treesitter.configs'.setup {
         "html",
         "javascript",
         "lua",
+        "markdown",
         "rust",
         "vim",
         "vimdoc",

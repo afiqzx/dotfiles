@@ -11,6 +11,7 @@ global.shiftwidth = 4
 global.softtabstop = 4
 global.tabstop = 4
 
+
 -- enable mouse goodness
 global.mouse = 'a'
 
@@ -22,9 +23,9 @@ options = { noremap = true, silent = true }
 kmap('n', '<left>', ':bp<CR>', options)
 kmap('n', '<right>', ':bn<CR>', options)
 
-kmap('n', '<leader>f', ':Telescope find_files theme=dropdown<CR>', options)
-kmap('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>', options)
-kmap('n', '<leader>g', ':Telescope live_grep theme=dropdown<CR>', options)
+kmap('n', '<leader>f', ':Telescope find_files<CR>', options)
+kmap('n', '<leader>b', ':Telescope buffers<CR>', options)
+kmap('n', '<leader>g', ':Telescope live_grep<CR>', options)
 kmap('n', '<leader>e', ':Explore<CR>', options)
 kmap('n', '<leader>t', ':Texplore<CR>', options)
 

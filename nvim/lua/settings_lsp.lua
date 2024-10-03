@@ -113,6 +113,17 @@ nvim_lsp.tsserver.setup({
 nvim_lsp.html.setup({
     on_attach=on_attach,
     capabilities=capabilities,
+    filetypes = {
+        "rust",
+        "css",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "jinja",
+    }
+
 })
 
 nvim_lsp.jinja_lsp.setup({
@@ -145,6 +156,7 @@ nvim_lsp.tailwindcss.setup({
         "typescriptreact",
         "html",
         "jinja",
+        "htmldjango",
     },
     --init_options = {
     --    userLanguages = {
@@ -175,6 +187,11 @@ nvim_lsp.cmake.setup({
 })
 
 nvim_lsp.ocamllsp.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
+
+nvim_lsp.gopls.setup({
     on_attach=on_attach,
     capabilities=capabilities,
 })
