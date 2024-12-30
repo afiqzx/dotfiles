@@ -4,6 +4,9 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+## REQUIRED
+# Install: rofi, fcitx5, i3status, grim
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -24,7 +27,7 @@ set $menu rofi -show drun  | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg $HOME/.config/sway/bliss.jpg fill
 #
 # Example configuration:
 #
@@ -34,7 +37,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output DP-2 {
     mode 2560x1440@143.972Hz
     adaptive_sync enabled
-    scale 1.15
+    scale 1.00
 }
 
 ### Idle configuration
@@ -80,6 +83,9 @@ input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+     # capture all screens to clipboard    
+     bindsym $mod+Print exec grim
+ 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
@@ -221,3 +227,5 @@ bar {
         inactive_workspace #000000 #000000 #8c8c8c
     }
 }
+
+exec --no-startup-id fcitx5 -d
