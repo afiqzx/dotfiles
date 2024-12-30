@@ -4,11 +4,13 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+## REQUIRED
+# Install: rofi, fcitx5, i3status, grim
+
 ### Variables
 #
-# Logo key. Use Mod1 for Alt. Mod4 for Super/Windows
-# XF86Launch6 is F15 because Final Fantasy 15 is the best Final Fantasy
-set $mod XF86Launch6
+# Logo key. Use Mod1 for Alt.
+set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -22,11 +24,10 @@ set $term alacritty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu rofi -show drun  | xargs swaymsg exec --
 
-
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg $HOME/.config/sway/bliss.jpg fill
 #
 # Example configuration:
 #
@@ -35,8 +36,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output DP-2 {
     mode 2560x1440@143.972Hz
-    adaptive_sync disabled
-    scale 1.0
+    adaptive_sync enabled
+    scale 1.00
 }
 
 ### Idle configuration
@@ -77,17 +78,14 @@ input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    #floating_modifier $mod normal
+    floating_modifier $mod normal
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
     # capture all screens to clipboard    
     bindsym $mod+Print exec grim
-
-    # capture the specified screen area to clipboard    
-    #bindsym $mod+Shift_L+Print exec grim -g `slurp`
-
+ 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
@@ -151,9 +149,9 @@ input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+z layout stacking
-    bindsym $mod+n layout tabbed
-    bindsym $mod+m layout toggle split
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -166,7 +164,6 @@ input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
-    bindsym $mod+s focus child
 #
 # Scratchpad:
 #
@@ -231,6 +228,4 @@ bar {
     }
 }
 
-
 exec --no-startup-id fcitx5 -d
-
