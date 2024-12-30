@@ -83,8 +83,8 @@ input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-     # capture all screens to clipboard    
-     bindsym $mod+Print exec grim
+    # capture all screens to clipboard    
+    bindsym $mod+Print exec grim
  
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
