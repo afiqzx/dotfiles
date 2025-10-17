@@ -1,5 +1,5 @@
 
-local nvim_lsp = require'lspconfig'
+local nvim_lsp = vim.lsp.config
 local cmp = require'cmp'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -45,7 +45,7 @@ local on_attach = function(client, bufnr)
   --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap=true, silent=false }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD'              , '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -63,8 +63,8 @@ local on_attach = function(client, bufnr)
 
 end
 
--- for rust-analzyer (only rust get special treatment lol)
-local ranalyzeropts = {
+
+nvim_lsp('rust_analyzer', {
     on_attach=on_attach,
     capabilities=capabilities,
 
@@ -86,35 +86,32 @@ local ranalyzeropts = {
             -- },
         }
     },
-}
+})
 
-nvim_lsp.rust_analyzer.setup(ranalyzeropts)
-
-nvim_lsp.clangd.setup({
+nvim_lsp('clangd',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
 
-nvim_lsp.pylsp.setup({
+nvim_lsp('pylsp',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
 
-nvim_lsp.dartls.setup({
+nvim_lsp('dartls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
 
-nvim_lsp.ts_ls.setup({
+nvim_lsp('ts_ls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
 
-nvim_lsp.html.setup({
+nvim_lsp('html',{
     on_attach=on_attach,
     capabilities=capabilities,
     filetypes = {
-        "rust",
         "css",
         "javascript",
         "javascriptreact",
@@ -126,7 +123,7 @@ nvim_lsp.html.setup({
 
 })
 
-nvim_lsp.jinja_lsp.setup({
+nvim_lsp('jinja_lsp',{
     on_attach=on_attach,
     capabilities=capabilities,
 
@@ -138,12 +135,12 @@ nvim_lsp.jinja_lsp.setup({
     },
 })
 
-nvim_lsp.cssls.setup({
+nvim_lsp('cssls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
 
-nvim_lsp.tailwindcss.setup({
+nvim_lsp('tailwindcss',{
     on_attach=on_attach,
     capabilities=capabilities,
 
@@ -179,19 +176,19 @@ nvim_lsp.tailwindcss.setup({
 -- This is important because nvim will shit on you about multiple 
 -- offset_encodings not supported (yet)
 --slint_setting.capabilities.offsetEncoding = 'utf-8'
---nvim_lsp.slint_lsp.setup(slint_setting)
+--nvim_lsp('slint_lsp',slint_setting)
 
-nvim_lsp.cmake.setup({
+nvim_lsp('cmake',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
 
-nvim_lsp.ocamllsp.setup({
+nvim_lsp('ocamllsp',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
 
-nvim_lsp.gopls.setup({
+nvim_lsp('gopls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
