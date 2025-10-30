@@ -42,7 +42,7 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   --Enable completion triggered by <c-x><c-o> (omnifunc setup is fallback)
-  --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap=true, silent=false }
@@ -64,7 +64,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-nvim_lsp('rust_analyzer', {
+vim.lsp.config('rust_analyzer', {
     on_attach=on_attach,
     capabilities=capabilities,
 
@@ -87,28 +87,34 @@ nvim_lsp('rust_analyzer', {
         }
     },
 })
+vim.lsp.enable('rust_analyzer')
 
-nvim_lsp('clangd',{
+vim.lsp.config('clangd',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('clangd')
 
-nvim_lsp('pylsp',{
+
+vim.lsp.config('pylsp',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('pylsp')
 
-nvim_lsp('dartls',{
+vim.lsp.config('dartls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('dartls')
 
-nvim_lsp('ts_ls',{
+vim.lsp.config('ts_ls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('ts_ls')
 
-nvim_lsp('html',{
+vim.lsp.config('html',{
     on_attach=on_attach,
     capabilities=capabilities,
     filetypes = {
@@ -122,8 +128,9 @@ nvim_lsp('html',{
     }
 
 })
+vim.lsp.enable('html')
 
-nvim_lsp('jinja_lsp',{
+vim.lsp.config('jinja_lsp',{
     on_attach=on_attach,
     capabilities=capabilities,
 
@@ -134,13 +141,15 @@ nvim_lsp('jinja_lsp',{
         lang = "rust"
     },
 })
+--vim.lsp.enable('jinja_lsp')
 
-nvim_lsp('cssls',{
+vim.lsp.config('cssls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('cssls')
 
-nvim_lsp('tailwindcss',{
+vim.lsp.config('tailwindcss',{
     on_attach=on_attach,
     capabilities=capabilities,
 
@@ -161,6 +170,7 @@ nvim_lsp('tailwindcss',{
     --    },
     --},
 })
+vim.lsp.enable('tailwindcss')
 
 --local slint_setting = {
 --    on_attach=on_attach,
@@ -176,20 +186,23 @@ nvim_lsp('tailwindcss',{
 -- This is important because nvim will shit on you about multiple 
 -- offset_encodings not supported (yet)
 --slint_setting.capabilities.offsetEncoding = 'utf-8'
---nvim_lsp('slint_lsp',slint_setting)
+--vim.lsp.config('slint_lsp',slint_setting)
 
-nvim_lsp('cmake',{
+vim.lsp.config('cmake',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('cmake')
 
-nvim_lsp('ocamllsp',{
+vim.lsp.config('ocamllsp',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('ocamllsp')
 
-nvim_lsp('gopls',{
+vim.lsp.config('gopls',{
     on_attach=on_attach,
     capabilities=capabilities,
 })
+vim.lsp.enable('gopls')
 
