@@ -1,60 +1,49 @@
-
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
   end
-  return false
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+require('lazy').setup({
 
   -- basics
-  use 'airblade/vim-rooter'
-  use {
-      'nvim-telescope/telescope.nvim',
-      requires = {
-          { 'nvim-tree/nvim-web-devicons', opt = false },
-          { 'nvim-lua/plenary.nvim', opt = false },
-      }
-  }
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'folke/tokyonight.nvim'
+  'nvim-tree/nvim-web-devicons',
+  'nvim-lua/plenary.nvim',
+  'airblade/vim-rooter',
+  
+  'nvim-telescope/telescope.nvim',
+  'nvim-treesitter/nvim-treesitter',
+  'folke/tokyonight.nvim',
 
-  use 'neovim/nvim-lspconfig'
+  'neovim/nvim-lspconfig',
 
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'hrsh7th/cmp-nvim-lsp'
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp-signature-help',
+  'hrsh7th/cmp-nvim-lsp',
 
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
 
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = false }
-  }
+  
+  'nvim-tree/nvim-web-devicons',
+  'nvim-lualine/lualine.nvim',
 
-  use 'cespare/vim-toml'
-  use 'stephpy/vim-yaml'
+  'cespare/vim-toml',
+  'stephpy/vim-yaml',
 
   -- THE OG LETSSGOOOOOO
-  use 'tpope/vim-fugitive'
+  'tpope/vim-fugitive',
 
-  use 'slint-ui/vim-slint'
-  --use 'mrcjkb/rustaceanvim'  -- on a side note I don't want this, will cause conflict with my LSP setup
-  --use 'rust-lang/rust.vim' -- Don't think we need this
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
-
+  'slint-ui/vim-slint',
+})
