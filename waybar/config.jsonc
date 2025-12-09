@@ -7,12 +7,12 @@
     "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
+        "hyprland/window"
+    ],
+    "modules-center": [
         "hyprland/workspaces",
         "hyprland/submap",
         "hyprland/scratchpad"
-    ],
-    "modules-center": [
-        "hyprland/window"
     ],
     "modules-right": [
         "idle_inhibitor",
@@ -50,11 +50,12 @@
         "format": "{icon}: {windows}",
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "format-window-separator": "┆",
+        "format-window-separator": "　┆　",
         "workspace-taskbar": {
             "enable": true,
             "update-active-window": true,
-            "format": "{icon} {title:.22}",
+            "format": "{icon}",
+            //"format": "{icon} {title:.22}",
             "icon-size": 18,
             //"on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
         }
