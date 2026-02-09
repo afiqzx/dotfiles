@@ -1,0 +1,2 @@
+This is the bare minimum launch option
+gamescope --fullscreen --adaptive-sync -w 2560 -h 1440 --hdr-enabled --hdr-debug-force-output -- env DXVK_HDR=1 %command%
