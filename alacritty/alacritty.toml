@@ -1,3 +1,7 @@
+[general]
+#import = ["~/.config/alacritty/themes/noctalia.toml"]
+import = ["~/.config/alacritty/themes/noctalia.toml"]
+
 [terminal.shell]
 program = "/usr/bin/fish"
 args = ["-c", "/usr/bin/tmux new -As0"]
