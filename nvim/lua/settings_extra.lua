@@ -10,8 +10,16 @@ vim.cmd'colorscheme tokyonight-night'
 options = { noremap = true, silent = true }
 --options = { noremap = true }          -- this is for debugging purpose (not silent)
 
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 
+require'nvim-treesitter'.setup {
+    sync_install = true,
+
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+}
+
+require'nvim-treesitter'.install {
         "c",
         "cpp",
         "css",
@@ -22,14 +30,6 @@ require'nvim-treesitter.configs'.setup {
         "rust",
         "vim",
         "vimdoc",
-    },
-
-    sync_install = true,
-
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
 }
 
 require('lualine').setup()
